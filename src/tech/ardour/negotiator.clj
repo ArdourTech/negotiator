@@ -2,13 +2,24 @@
   (:require
     [clojure.walk :as walk]
     [tech.ardour.negotiator.edn :as edn]
-    [tech.ardour.negotiator.json :as json]))
+    [tech.ardour.negotiator.json :as json]
+    [clojure.string :as str]))
 
+(defn- mime-and-charset [content-type]
+  (-> content-type
+      (str/lower-case)
+      (str/split #";")
+      (map str/trim)))
+
+(defn- mime-type [content-type]
+  (first (mime-and-charset content-type)))
+
+;TODO Support charsets
 (defmulti decode (fn [content-type body]
-                   content-type))
+                   (mime-type content-type)))
 
 (defmulti encode (fn [content-type body]
-                   content-type))
+                   (mime-type content-type)))
 
 (defmethod decode nil [content-type body]
   (throw (ex-info "No decoder defined" {:content-type content-type})))
