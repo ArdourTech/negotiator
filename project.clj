@@ -1,4 +1,4 @@
-(defproject tech.ardour/negotiator "0.0.1"
+(defproject tech.ardour/negotiator "0.0.2"
   :description "Ardour Tech Content Negotiation Library"
   :url "https://github.com/ArdourTech/negotiator"
   :license {:name         "Eclipse Public License - v 1.0"

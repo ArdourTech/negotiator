@@ -1,7 +1,8 @@
 (ns tech.ardour.negotiator
   (:require
-    [tech.ardour.negotiator.json :as json]
-    [tech.ardour.negotiator.edn :as edn]))
+    [clojure.walk :as walk]
+    [tech.ardour.negotiator.edn :as edn]
+    [tech.ardour.negotiator.json :as json]))
 
 (defmulti decode (fn [content-type body]
                    content-type))
@@ -26,3 +27,10 @@
 
 (defmethod encode edn/mime-type [_ body]
   (edn/write body))
+
+(defn transform-keys
+  "Recursively transforms all map keys through the given transformer `f`, with optional predicate matching."
+  ([transform-fn m] (transform-keys any? transform-fn m))
+  ([pred? transform-fn m]
+   (let [f (fn [[k v :as kv]] (if (pred? k) [(transform-fn k) v] kv))]
+     (walk/postwalk (fn [x] (if (map? x) (into {} (map f x)) x)) m))))
