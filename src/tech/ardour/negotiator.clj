@@ -6,10 +6,9 @@
     [clojure.string :as str]))
 
 (defn- mime-and-charset [content-type]
-  (-> content-type
-      (str/lower-case)
-      (str/split #";")
-      (map str/trim)))
+  (map str/trim (-> content-type
+                    (str/lower-case)
+                    (str/split #";"))))
 
 (defn- mime-type [content-type]
   (first (mime-and-charset content-type)))
