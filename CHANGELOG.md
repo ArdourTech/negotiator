@@ -1,8 +1,11 @@
 # Changelog
 
-## 0.0.3 (unreleased)
+## 0.1.0 (unreleased)
 
-* Temporary Fix: `negotiator/encode` and `negotiator/decode` compare against the base content-type
+* Added: `tech.ardour.negotiator/mime-and-charset`
+* Added: `tech.ardour.negotiator/mime-type`
+* Changed: `tech.ardour.negotiator/transform-keys` to be Clojure and ClojureScript
+* Fix: `tech.ardour.negotiator.convert/->camelCase` and hyphenated values
 
 ## 0.0.2 (2021-01-09)
 
