@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [read])
   (:require
     #?(:clj  [jsonista.core :as j]
-       :cljs [tech.ardour.negotiator.js :as js])
+       :cljs [tech.ardour.negotiator.js :as n-js])
     [tech.ardour.negotiator.convert :as convert]))
 
 (def mime-type "application/json")
@@ -19,12 +19,12 @@
    #?(:clj  (j/read-value s opts)
       :cljs (-> s
                 (js/JSON.parse)
-                (js/read opts)))))
+                (n-js/read opts)))))
 
 (defn write
   ([o] (write o #?(:clj mapper :cljs nil)))
   ([o opts]
    #?(:clj  (j/write-value-as-string o opts)
       :cljs (-> o
-                (js/write opts)
+                (n-js/write opts)
                 (js/JSON.stringify)))))
