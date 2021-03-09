@@ -4,6 +4,10 @@
 
 * Added: `tech.ardour.negotiator/mime-and-charset`
 * Added: `tech.ardour.negotiator/mime-type`
+* Added: `tech.ardour.negotiator.js/read`
+* Added: `tech.ardour.negotiator.js/write`
+* Added: `tech.ardour.negotiator.json/read` overload to allow configuration
+* Added: `tech.ardour.negotiator.json/write` overload to allow configuration
 * Changed: `tech.ardour.negotiator/transform-keys` to be Clojure and ClojureScript
 * Fix: `tech.ardour.negotiator.convert/->camelCase` and hyphenated values
 
