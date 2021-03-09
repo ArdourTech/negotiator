@@ -5,7 +5,8 @@
     [tech.ardour.negotiator :as neg]
     [tech.ardour.negotiator.convert :as convert]))
 
-(def read-defaults {:key?   (complement str/blank?)
+(def read-defaults {:key?   #(and (string? %)
+                                  (not (str/blank? %)))
                     :key-fn (comp keyword convert/->kebab-case)})
 
 (def write-defaults {:key?   keyword?
