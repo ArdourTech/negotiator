@@ -25,4 +25,7 @@
         (is (= "escapeHtmlEntities" (->camelCase "escape HTML entities")))
         (is (= "escapeHtmlEntities" (->camelCase "escapeHTMLEntities")))
         (is (= "xmlHttpRequest" (->camelCase "XMLHttpRequest")))
-        (is (= "xmlHttpRequest" (->camelCase "XmlHTTPRequest")))))))
+        (is (= "xmlHttpRequest" (->camelCase "XmlHTTPRequest"))))
+
+      (testing "should handle hyphenated values"
+        (is (= "requestId" (->camelCase "request-id")))))))

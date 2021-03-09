@@ -16,7 +16,7 @@
                                rest)))
        s))))
 
-(def ->camelCase (change-case nil str/lower-case str/capitalize))
+(def ->camelCase (change-case "" str/lower-case str/capitalize))
 (def ->snake_case (change-case \_ str/lower-case))
 (def ->kebab-case (change-case \- str/lower-case))
 (def ->SNAKE_CASE (change-case \_ str/upper-case))
